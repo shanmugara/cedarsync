@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- cedarsync_v1alpha1_cedarpolicy.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples
