@@ -17,4 +17,12 @@ resources:
   kind: CedarPolicy
   path: github.com/shanmugara/cedarsync/api/v1alpha1
   version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  domain: omegahome.net
+  group: cedarsync
+  kind: CedarApi
+  path: github.com/shanmugara/cedarsync/api/v1alpha1
+  version: v1alpha1
 version: "3"

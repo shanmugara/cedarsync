@@ -23,26 +23,19 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
-// CedarPolicySpec defines the desired state of CedarPolicy
-type CedarPolicySpec struct {
+// CedarApiSpec defines the desired state of CedarApi
+type CedarApiSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Policy is the CEDAR policy to be enforced
-	Policy *Policy `json:"policy"`
+	// cluster is the kubernetes cluster to be managed
+	Cluster string `json:"cluster"`
+	// apiUrl is the URL:port of the CEDAR API to fetch the policy from
+	ApiUrl string `json:"apiUrl"`
 }
 
-type Policy struct {
-	Principal   string            `json:"principal"`
-	Action      string            `json:"action"`
-	Resource    string            `json:"resource"`
-	Effect      string            `json:"effect"`
-	Conditions  []string          `json:"conditions"`
-	Annotations map[string]string `json:"annotations"`
-}
-
-// CedarPolicyStatus defines the observed state of CedarPolicy
-type CedarPolicyStatus struct {
+// CedarApiStatus defines the observed state of CedarApi
+type CedarApiStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 }
@@ -50,24 +43,24 @@ type CedarPolicyStatus struct {
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 
-// CedarPolicy is the Schema for the cedarpolicies API
-type CedarPolicy struct {
+// CedarApi is the Schema for the cedarapis API
+type CedarApi struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   CedarPolicySpec   `json:"spec,omitempty"`
-	Status CedarPolicyStatus `json:"status,omitempty"`
+	Spec   CedarApiSpec   `json:"spec,omitempty"`
+	Status CedarApiStatus `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
 
-// CedarPolicyList contains a list of CedarPolicy
-type CedarPolicyList struct {
+// CedarApiList contains a list of CedarApi
+type CedarApiList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []CedarPolicy `json:"items"`
+	Items           []CedarApi `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&CedarPolicy{}, &CedarPolicyList{})
+	SchemeBuilder.Register(&CedarApi{}, &CedarApiList{})
 }
